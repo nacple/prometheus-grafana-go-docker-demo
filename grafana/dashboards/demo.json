@@ -1,0 +1,30 @@
+{
+  "annotations": { "list": [] },
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "panels": [
+    {
+      "type": "timeseries",
+      "title": "Events Rate",
+      "targets": [ { "expr": "rate(demo_events_total[1m])" } ],
+      "gridPos": { "x": 0, "y": 0, "w": 24, "h": 8 }
+    },
+    {
+      "type": "stat",
+      "title": "Active Players",
+      "targets": [ { "expr": "demo_active_players" } ],
+      "gridPos": { "x": 0, "y": 8, "w": 12, "h": 6 }
+    },
+    {
+      "type": "timeseries",
+      "title": "Request Latency (p95)",
+      "targets": [ { "expr": "histogram_quantile(0.95, sum(rate(demo_request_latency_seconds_bucket[5m])) by (le))" } ],
+      "gridPos": { "x": 12, "y": 8, "w": 12, "h": 6 }
+    }
+  ],
+  "schemaVersion": 36,
+  "title": "Demo App",
+  "version": 1
+}
+
